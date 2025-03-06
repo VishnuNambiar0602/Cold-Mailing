@@ -1,0 +1,9 @@
+google-colab
+smtplib
+email
+pandas
+pdfplumber
+docx2txt
+spacy
+sklearn
+nltk
