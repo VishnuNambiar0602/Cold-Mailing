@@ -86,8 +86,4 @@ More info: [Gmail App Password Setup](https://support.google.com/mail/answer/185
 
 ---
 
-## 🚀 Getting Started
-
-```bash
-pip install pandas
 
