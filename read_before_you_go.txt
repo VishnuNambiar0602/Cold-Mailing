@@ -1,0 +1,93 @@
+# 📧 Automated Email Sender using Gmail SMTP & Google Sheets
+
+This Python script automates sending **personalized HTML emails with optional attachments** using Gmail’s SMTP server. It's ideal for use cases such as:
+
+- Research internship requests  
+- Job applications  
+- Conference invites  
+- Mass announcements  
+
+It pulls recipient details from a **Google Sheet**, customizes the email body using their names, attaches files like resumes or cover letters, and sends them via Gmail in a clean and structured HTML format.
+
+---
+
+## ✅ Features
+
+- 📤 Send emails with **HTML formatting**
+- 📎 Supports file **attachments**
+- 📋 Reads recipient data from **Google Sheets**
+- 🔐 Uses **Gmail App Password** authentication
+- 🧠 Personalizes each message (e.g., `Dear <Name>`)
+- 🔁 Loop through unlimited recipients
+- 🕒 Optionally add delay (`time.sleep()`) to avoid spam/rate limits
+
+---
+
+## 🔧 How It Works
+
+### 1. **Data Extraction from Google Sheets**
+- The `taking_values()` function fetches recipient data (Name, Email, etc.) from a public Google Sheet.
+- Sheet is accessed as a CSV using the `sheet_id` and `sheet_name`.
+- Each row is returned as a list in a master list.
+
+### 2. **Composing and Sending Email**
+The `send_email()` function:
+- Creates a multipart email with subject, sender, receiver, and optional CC.
+- Uses HTML formatting for styling.
+- Attaches an optional file (like your resume).
+- Authenticates via Gmail's SMTP using an App Password.
+- Sends through `smtp.gmail.com:587` using TLS encryption.
+
+### 3. **Main Flow**
+The `main()` function:
+- Sets the subject, sender email, and Gmail App Password.
+- Defines the file to be attached (e.g., your resume PDF).
+- Iterates through each recipient row.
+- Dynamically injects the person's name into the email body.
+- Sends the email and logs confirmation.
+
+### 4. **Personalized HTML Email Template**
+The email message includes:
+- A greeting with the recipient's name.
+- A structured and bolded HTML letter describing interest in a **Research Assistant** position.
+- Signature with **LinkedIn** profile link.
+
+---
+
+## 🛠️ Fixes & Improvements Added
+
+- ✅ Defined the missing `file_path` variable.
+- ✅ Replaced placeholder email credentials with inline comments.
+- ✅ Injected dynamic `Name` and LinkedIn values.
+- ✅ Removed unused `attachment()` function.
+- ✅ Simplified and explained CC handling.
+- ✅ Recommended optional delay to prevent Gmail rate-limiting.
+
+---
+
+## 📝 Replace These Before Use
+
+| Variable        | Replace With                        |
+|----------------|-------------------------------------|
+| `from_addr`     | Your Gmail ID                      |
+| `app_password`  | Your Gmail **App Password**        |
+| `file_path`     | Local path to your attachment      |
+| `sheet_id`      | Your Google Sheet ID               |
+| `sheet_name`    | Exact sheet name from the document |
+| LinkedIn link   | Your actual LinkedIn profile       |
+| `subject`       | Your intended subject line         |
+
+---
+
+## 🔐 Gmail Setup Tip
+
+> Enable **2-Step Verification** on your Gmail account and generate an **App Password** to use this script.  
+More info: [Gmail App Password Setup](https://support.google.com/mail/answer/185833?hl=en)
+
+---
+
+## 🚀 Getting Started
+
+```bash
+pip install pandas
+
